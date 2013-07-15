@@ -16,6 +16,7 @@ package com.commonsware.android.picture;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
@@ -24,13 +25,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class PictureDemo extends Activity {
   private SurfaceView preview=null;
   private SurfaceHolder previewHolder=null;
@@ -43,7 +42,7 @@ public class PictureDemo extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    preview=(SurfaceView)findViewById(R.id.preview);
+    preview=(SurfaceView)findViewById(R.id.svOverlay);
     previewHolder=preview.getHolder();
     previewHolder.addCallback(surfaceCallback);
     previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -59,7 +58,7 @@ public class PictureDemo extends Activity {
       for (int i=0; i < Camera.getNumberOfCameras(); i++) {
         Camera.getCameraInfo(i, info);
 
-        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
           camera=Camera.open(i);
         }
       }
@@ -84,11 +83,10 @@ public class PictureDemo extends Activity {
 
     super.onPause();
   }
-
+/*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     new MenuInflater(this).inflate(R.menu.options, menu);
-
     return(super.onCreateOptionsMenu(menu));
   }
 
@@ -103,7 +101,7 @@ public class PictureDemo extends Activity {
 
     return(super.onOptionsItemSelected(item));
   }
-
+*/
   private Camera.Size getBestPreviewSize(int width, int height,
                                          Camera.Parameters parameters) {
     Camera.Size result=null;

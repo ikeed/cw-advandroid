@@ -1,7 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.view.SurfaceView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/preview"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/preview_rlMain"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-</android.view.SurfaceView>
+    android:layout_height="match_parent" >
+
+    <SurfaceView
+        android:id="@+id/svOverlay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <ImageView
+        android:id="@+id/imgBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_menu_camera" />
+
+    <EditText
+        android:id="@+id/lblFocusMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imgBattery"
+        android:inputType="none"
+        android:text="Auto" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_menu_camera" />
+
+    <ImageButton
+        android:id="@+id/btnAppLaunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/btnInfo"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_menu_camera" />
+
+    <LinearLayout
+        android:id="@+id/overlay_llDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" >
+
+        <EditText
+            android:id="@+id/lblDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:text="11/22/13" />
+
+        <EditText
+            android:id="@+id/lblTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@id/lblDate"
+            android:inputType="date"
+            android:text="12:00 PM" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnCameraMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lblFocusMode"
+        android:src="@drawable/ic_menu_camera" />
+
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lblFocusMode"
+        android:src="@drawable/ic_menu_camera" />
+
+    <ImageButton
+        android:id="@+id/btnThumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_menu_camera" />
+
+    <EditText
+        android:id="@+id/lblWorkOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnThumbnail"
+        android:ems="10"
+        android:text="WO#123-456-789" />
+
+</RelativeLayout>
